@@ -51,4 +51,14 @@ public class Serie {
     episodio.setSerie(this);
     this.episodios.add(episodio);
   }
+
+  /**
+   * episodio existente.
+   */
+  public boolean episodioExiste(Episodio episodio) {
+    Integer numero = episodio.getNumero();
+    boolean exist =
+        this.episodios.stream().filter(e -> e.getNumero() == numero).findFirst().isPresent();
+    return exist;
+  }
 }
