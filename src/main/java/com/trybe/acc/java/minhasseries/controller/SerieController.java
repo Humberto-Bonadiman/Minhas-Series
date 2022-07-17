@@ -2,6 +2,7 @@ package com.trybe.acc.java.minhasseries.controller;
 
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
+import com.trybe.acc.java.minhasseries.model.TempoTotal;
 import com.trybe.acc.java.minhasseries.service.SerieService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,21 +33,28 @@ public class SerieController {
     return new ResponseEntity<>(serieList, HttpStatus.OK);
   }
 
-  @DeleteMapping(value = "/series/{serie_id}")
+  @DeleteMapping(value = "/series/{id}")
   public ResponseEntity<Object> delete(@PathVariable Integer id) {
     serieService.deleteSerieById(id);
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
-  @PostMapping(value = "/series/{serie_id}/episodios")
-  public ResponseEntity<Object> addEpisodio(@PathVariable Integer id, Episodio episodio) {
+  @PostMapping(value = "/series/{id}/episodios")
+  public ResponseEntity<Object> addEpisodio(
+      @PathVariable Integer id, @RequestBody Episodio episodio) {
     Serie episodioAdd = serieService.addEpisodio(id, episodio);
     return new ResponseEntity<>(episodioAdd, HttpStatus.OK);
   }
 
-  @GetMapping(value = "/series/{serie_id}/episodios")
+  @GetMapping(value = "/series/{id}/episodios")
   public ResponseEntity<Object> findAllEpisodios(@PathVariable Integer id) {
     List<Episodio> listEpisodios = serieService.episodioList(id);
     return new ResponseEntity<>(listEpisodios, HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/series/tempo")
+  public ResponseEntity<Object> viewTime() {
+    Integer response = serieService.sumTimes();
+    return new ResponseEntity<>(new TempoTotal(response), HttpStatus.OK);
   }
 }
