@@ -13,17 +13,21 @@ public class Serie {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private Integer id;
   private String nome;
 
   @OneToMany(mappedBy = "episodio", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Episodio> episodio;
+  private List<Episodio> episodios;
+
+  public Serie(String nome) {
+    this.nome = nome;
+  }
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -35,11 +39,16 @@ public class Serie {
     this.nome = nome;
   }
 
-  public List<Episodio> getEpisodio() {
-    return episodio;
+  public List<Episodio> getEpisodios() {
+    return episodios;
   }
 
-  public void setEpisodio(List<Episodio> episodio) {
-    this.episodio = episodio;
+  public void setEpisodios(List<Episodio> episodios) {
+    this.episodios = episodios;
+  }
+
+  public void adicionarEpisodio(Episodio episodio) {
+    episodio.setSerie(this);
+    this.episodios.add(episodio);
   }
 }
