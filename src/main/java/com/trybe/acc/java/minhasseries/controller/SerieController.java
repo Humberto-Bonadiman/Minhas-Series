@@ -1,5 +1,6 @@
 package com.trybe.acc.java.minhasseries.controller;
 
+import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.service.SerieService;
 import java.util.List;
@@ -35,5 +36,17 @@ public class SerieController {
   public ResponseEntity<Object> delete(@PathVariable Integer id) {
     serieService.deleteSerieById(id);
     return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @PostMapping(value = "/series/{serie_id}/episodios")
+  public ResponseEntity<Object> addEpisodio(@PathVariable Integer id, Episodio episodio) {
+    Serie episodioAdd = serieService.addEpisodio(id, episodio);
+    return new ResponseEntity<>(episodioAdd, HttpStatus.OK);
+  }
+
+  @GetMapping(value = "/series/{serie_id}/episodios")
+  public ResponseEntity<Object> findAllEpisodios(@PathVariable Integer id) {
+    List<Episodio> listEpisodios = serieService.episodioList(id);
+    return new ResponseEntity<>(listEpisodios, HttpStatus.OK);
   }
 }

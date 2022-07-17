@@ -69,10 +69,15 @@ public class SerieService {
    * sum times.
    */
   public Integer sumTimes() {
-    if (this.serieList().isEmpty()) {
+    List<Serie> series = repository.findAll();
+    if (series.isEmpty()) {
       return 0;
     }
-    Integer timeSpent = 0;
+    int timeSpent = series.stream().reduce(0,
+        (subtotal,
+            serie) -> subtotal + serie.getEpisodios().stream().reduce(0,
+                (total, episodio) -> total + episodio.getDuracaoEmMinutos(), Integer::sum),
+        Integer::sum);
     return timeSpent;
   }
 }
