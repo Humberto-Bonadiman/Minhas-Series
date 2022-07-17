@@ -64,4 +64,15 @@ public class SerieService {
         repository.findById(id).orElseThrow(() -> new SerieNaoEncontradaException());
     return serie.getEpisodios();
   }
+
+  /**
+   * sum times.
+   */
+  public Integer sumTimes() {
+    if (this.serieList().isEmpty()) {
+      return 0;
+    }
+    Integer timeSpent = 0;
+    return timeSpent;
+  }
 }
