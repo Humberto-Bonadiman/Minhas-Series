@@ -1,6 +1,8 @@
 package com.trybe.acc.java.minhasseries.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ public class Episodio {
   private Integer numero;
   private Integer duracaoEmMinutos;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "serie_id")
   private Serie serie;
 
@@ -63,6 +65,7 @@ public class Episodio {
     this.duracaoEmMinutos = duracaoEmMinutos;
   }
 
+  @JsonIgnore
   public Serie getSerie() {
     return serie;
   }

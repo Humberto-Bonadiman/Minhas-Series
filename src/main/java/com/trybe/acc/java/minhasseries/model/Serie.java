@@ -1,8 +1,10 @@
 package com.trybe.acc.java.minhasseries.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,12 +18,15 @@ public class Serie {
   private Integer id;
   private String nome;
 
-  @OneToMany(mappedBy = "episodio", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Episodio> episodios;
+  @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true,
+      fetch = FetchType.LAZY)
+  private List<Episodio> episodios = new ArrayList<Episodio>();
 
   public Serie(String nome) {
     this.nome = nome;
   }
+
+  public Serie() {}
 
   public int getId() {
     return id;

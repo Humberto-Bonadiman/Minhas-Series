@@ -7,6 +7,7 @@ public class TempoTotal {
   public TempoTotal() {}
 
   public TempoTotal(int tempoEmMinutos) {
+    super();
     this.tempoEmMinutos = tempoEmMinutos;
   }
 
