@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class SerieController {
 
   @Autowired
-  private SerieService serieService;
+  SerieService serieService;
 
   @PostMapping(value = "/series")
-  public ResponseEntity<Object> create(@RequestBody Serie serie) {
-    Serie serieCreate = serieService.addSerie(serie);
-    return new ResponseEntity<>(serieCreate, HttpStatus.OK);
+  public ResponseEntity<Serie> create(@RequestBody Serie serie) {
+    Serie createdSerie = serieService.create(serie);
+    return new ResponseEntity<>(createdSerie, HttpStatus.OK);
   }
 
   @GetMapping(value = "/series")
@@ -35,8 +35,8 @@ public class SerieController {
 
   @DeleteMapping(value = "/series/{id}")
   public ResponseEntity<Object> delete(@PathVariable Integer id) {
-    serieService.deleteSerieById(id);
-    return new ResponseEntity<>(HttpStatus.OK);
+    Serie isDeleted = serieService.delete(id);
+    return new ResponseEntity<>(isDeleted, HttpStatus.OK);
   }
 
   @PostMapping(value = "/series/{id}/episodios")
