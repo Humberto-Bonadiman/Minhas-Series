@@ -2,20 +2,20 @@ package com.trybe.acc.java.minhasseries.model;
 
 
 public class TempoTotal {
-  private int tempoEmMinutos;
+  private Integer tempoEmMinutos;
 
   public TempoTotal() {}
 
-  public TempoTotal(int tempoEmMinutos) {
+  public TempoTotal(Integer tempoEmMinutos) {
     super();
     this.tempoEmMinutos = tempoEmMinutos;
   }
 
-  public int getTempoEmMinutos() {
+  public Integer getTempoEmMinutos() {
     return tempoEmMinutos;
   }
 
-  public void setTempoEmMinutos(int tempoEmMinutos) {
+  public void setTempoEmMinutos(Integer tempoEmMinutos) {
     this.tempoEmMinutos = tempoEmMinutos;
   }
 }

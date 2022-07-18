@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * minha serie.
  */
 @SpringBootApplication
-public class MinhasSeriesApplication {
+public class SerieApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(MinhasSeriesApplication.class, args);
+    SpringApplication.run(SerieApplication.class, args);
   }
 }

@@ -28,7 +28,7 @@ public class Serie {
 
   public Serie() {}
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 

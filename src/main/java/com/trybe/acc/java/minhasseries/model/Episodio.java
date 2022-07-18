@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Episodio {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
@@ -26,6 +27,20 @@ public class Episodio {
    */
   public Episodio() {}
 
+  public Episodio(Integer numero, Integer duracaoEmMinutos) {
+    this.numero = numero;
+    this.duracaoEmMinutos = duracaoEmMinutos;
+  }
+
+  /**
+   * episodio.
+   */
+  public Episodio(Integer numero, Integer duracaoEmMinutos, Serie serie) {
+    this.numero = numero;
+    this.duracaoEmMinutos = duracaoEmMinutos;
+    this.serie = serie;
+  }
+
   /**
    * Episodio.
    */
@@ -36,12 +51,7 @@ public class Episodio {
     this.serie = serie;
   }
 
-  public Episodio(Integer numero, Integer duracaoEmMinutos) {
-    this.numero = numero;
-    this.duracaoEmMinutos = duracaoEmMinutos;
-  }
-
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
@@ -49,7 +59,7 @@ public class Episodio {
     this.id = id;
   }
 
-  public int getNumero() {
+  public Integer getNumero() {
     return numero;
   }
 
@@ -57,7 +67,7 @@ public class Episodio {
     this.numero = numero;
   }
 
-  public int getDuracaoEmMinutos() {
+  public Integer getDuracaoEmMinutos() {
     return duracaoEmMinutos;
   }
 
