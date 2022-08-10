@@ -4,7 +4,12 @@
 
 ## Descrição do projeto
 
-Neste projeto eu fui responsável por finalizar as configurações do docker-compose e Dockerfile presentes no projeto e depois testar a aplicação.
+Neste projeto eu fui responsável por criar um banco de dados onde poderia:
+- Cadastrar e visualizar as séries assistidas;
+- Adicionar episódios a séries assistidas (indicando o número do episódio e o tempo em minutos que ele possui);
+- Remover série com os seus episódios;
+- Visualizar episódios assistidos de uma determinada séries;
+- Visualizar tempo gasto total de todos os episódios já assistidos em todas as séries.
 
 ---
 
